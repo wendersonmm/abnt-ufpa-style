@@ -1,41 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0">
+<style xmlns="http://purl.org/net/xbiblio/csl" xmlns:cs="http://purl.org/net/xbiblio/csl" version="1.0">
   <info>
-    <title>ABNT UFPA 2025</title>
-    <id>http://www.ufpa.br/estilo/abnt-ufpa-2025</id>
-    <link href="http://www.ufpa.br" rel="self"/>
+    <title>ABNT UFPA 2025 (com DOI e URL)</title>
+    <id>https://github.com/citationstyles/abnt-ufpa-2025</id>
+    <link href="https://github.com/citationstyles/abnt-ufpa-2025" rel="self"/>
     <author>
-      <name>Customizado por ChatGPT</name>
+      <name>ChatGPT</name>
     </author>
     <category citation-format="author-date"/>
+    <category field="generic-base"/>
     <updated>2025-05-14T00:00:00+00:00</updated>
+    <summary>Estilo baseado na ABNT adaptado para a UFPA, incluindo DOI e URLs com data de acesso.</summary>
+    <language>pt-BR</language>
   </info>
+
   <macro name="author">
     <names variable="author">
       <name and="text" initialize-with="." delimiter=", "/>
       <label form="short" prefix=", " text-case="lowercase" suffix="."/>
     </names>
   </macro>
+
   <macro name="issued">
     <date variable="issued">
       <date-part name="year"/>
     </date>
   </macro>
+
   <macro name="title">
     <text variable="title" text-case="title"/>
   </macro>
+
   <macro name="container-title">
     <text variable="container-title" font-style="italic"/>
   </macro>
+
   <macro name="publisher">
     <group delimiter=", ">
       <text variable="publisher"/>
       <text variable="publisher-place"/>
     </group>
   </macro>
+
   <macro name="pages">
     <text variable="page" prefix="p. "/>
   </macro>
+
   <macro name="access">
     <choose>
       <if variable="URL">
@@ -53,7 +63,8 @@
       </else-if>
     </choose>
   </macro>
-  <citation collapse="year">
+
+  <citation collapse="year" disambiguate-add-year-suffix="true" year-suffix-delimiter="">
     <sort>
       <key variable="author"/>
       <key variable="issued"/>
@@ -63,6 +74,7 @@
       <text macro="issued" prefix=", "/>
     </layout>
   </citation>
+
   <bibliography hanging-indent="false" line-spacing="1" entry-spacing="1">
     <sort>
       <key macro="author"/>
