@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0">
+  <info>
+    <title>ABNT UFPA 2025</title>
+    <id>http://www.ufpa.br/estilo/abnt-ufpa-2025</id>
+    <link href="http://www.ufpa.br" rel="self"/>
+    <author>
+      <name>Customizado por ChatGPT</name>
+    </author>
+    <category citation-format="author-date"/>
+    <updated>2025-05-14T00:00:00+00:00</updated>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" initialize-with="." delimiter=", "/>
+      <label form="short" prefix=", " text-case="lowercase" suffix="."/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="title">
+    <text variable="title" text-case="title"/>
+  </macro>
+  <macro name="container-title">
+    <text variable="container-title" font-style="italic"/>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="pages">
+    <text variable="page" prefix="p. "/>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="URL">
+        <group delimiter=". ">
+          <text variable="URL"/>
+          <date variable="accessed" prefix="Acesso em: ">
+            <date-part name="day" suffix="/"/>
+            <date-part name="month" suffix="/"/>
+            <date-part name="year"/>
+          </date>
+        </group>
+      </if>
+      <else-if variable="DOI">
+        <text variable="DOI" prefix="https://doi.org/"/>
+      </else-if>
+    </choose>
+  </macro>
+  <citation collapse="year">
+    <sort>
+      <key variable="author"/>
+      <key variable="issued"/>
+    </sort>
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <text macro="author"/>
+      <text macro="issued" prefix=", "/>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="false" line-spacing="1" entry-spacing="1">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued"/>
+    </sort>
+    <layout>
+      <text macro="author" suffix=". "/>
+      <text macro="title" suffix=". "/>
+      <text macro="container-title" suffix=". "/>
+      <text macro="publisher" suffix=", "/>
+      <text macro="issued" suffix=". "/>
+      <text macro="pages" suffix=". "/>
+      <text macro="access"/>
+    </layout>
+  </bibliography>
+</style>
